@@ -1,0 +1,37 @@
+.main {
+  &-container {
+    display: flex;
+    padding: auto 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+    gap: 2rem;
+    margin: 5rem auto;
+  }
+
+  &-action-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    button {
+      padding: 1rem 2rem;
+
+      border-radius: 8px;
+      border-color: var(--second-color-500);
+      color: var(--second-color-500);
+      background-color: white;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--second-color-50);
+      }
+
+      &:active {
+        background-color: var(--second-color-500);
+        color: white;
+      }
+    }
+  }
+}
