@@ -14,14 +14,20 @@
 
   border-radius: 1rem;
   border: solid 1px var(--primary-color);
+  background-color: transparent;
+  transition: all 0.4s ease;
+  &:hover {
+    background-color: var(--second-color-10);
+  }
 
   h3 {
     font-size: 1.8rem;
-    color: var(--second-color-300);
+    color: var(--second-color-500);
     margin-top: 1rem;
   }
   p {
     max-width: 10rem;
+    font-weight: 500;
   }
 
   button {
@@ -32,6 +38,10 @@
     color: var(--second-color-500);
     background-color: transparent;
     cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: white;
+    }
 
     &:active {
       background-color: var(--second-color-500);

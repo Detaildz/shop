@@ -23,6 +23,7 @@
       color: var(--second-color-500);
       background-color: white;
       cursor: pointer;
+      transition: background-color 0.2s ease;
 
       &:hover {
         background-color: var(--second-color-50);
