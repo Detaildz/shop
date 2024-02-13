@@ -18,6 +18,7 @@ function MyCart({ cartData, setCartData }) {
             title={title}
             description={description}
             setCartData={setCartData}
+            cart={true}
           />
         ))}
       </main>

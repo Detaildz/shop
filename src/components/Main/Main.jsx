@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
-import { mockData } from '../../mockData';
+import React from 'react';
 
 import Card from '../Card/Card';
 
 import './main.scss';
 
-function Main({ setCartData }) {
-  const [data, setData] = useState(mockData);
+function Main({ setCartData, data, setData }) {
   // const [loading, setLoading] = useState(false);
 
   const handleSortData = (direction) => {
