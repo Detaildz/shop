@@ -1,8 +1,7 @@
-.main-cart_header {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
+.header-text {
   color: var(--green-color-500);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
   margin-top: 5rem;
 }

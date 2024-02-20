@@ -1,19 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
 import './card.scss';
-// import Button from '../Button/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
-function Card({ title, description, setCartData, cart }) {
+// import FavSVGoff from './favorite-star-off.svg';
+// import FavSVGon from './favorite-star-on.svg';
+
+function Card({ title, description, handleCartButton, cart }) {
+  const { handleAddToFav, handleRemoveFromFav, favData } =
+    useContext(AppContext);
+
+  const isFavorite = favData.some((item) => item.title === title);
+
   const handleAddToCart = () => {
-    setCartData({ title, description });
+    handleCartButton({ title, description });
   };
 
   return (
     <div className="card">
-      <h3>{title}</h3>
+      <h3> {title}</h3>
       <p>{description}</p>
       <button onClick={handleAddToCart}>
-        {cart ? 'remove from cart' : 'add to cart'}
+        {cart ? 'Remove' : 'Add to cart'}
       </button>
+      <FontAwesomeIcon
+        icon={faHeart}
+        beat
+        className={`favIcon ${isFavorite ? 'favIcon--clicked' : ''}`}
+        onClick={() =>
+          isFavorite
+            ? handleRemoveFromFav({ title, description })
+            : handleAddToFav({ title, description })
+        }
+      />
     </div>
   );
 }

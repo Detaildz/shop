@@ -48,4 +48,20 @@
       color: white;
     }
   }
+  .favIcon {
+    cursor: pointer;
+    color: rgb(188, 187, 184);
+    width: 1.5rem;
+    height: 1.5rem;
+
+    &--clicked {
+      color: var(--second-color-500);
+    }
+  }
+}
+
+.unActiveFav,
+.activeFav {
+  width: 33px;
+  height: 33px;
 }

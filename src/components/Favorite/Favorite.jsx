@@ -1,22 +1,20 @@
 import React, { useContext } from 'react';
 import { handleSort } from '../../helpers/SortHelper';
-
-import Card from '../Card/Card';
+import '../Favorite/favorite.scss';
+import '../Main/main.scss';
+// components
 import SortButtons from '../Button/SortButtons';
 
-import './main.scss';
+import Card from '../Card/Card';
 import { AppContext } from '../../context/AppContext';
 
-function Main() {
-  const { data, setData, handleAddToCart, handleAddToFav } =
-    useContext(AppContext);
+function Favorite() {
+  const { favData, setFavData } = useContext(AppContext);
 
   const handleSortData = (direction) => {
-    const sortedData = handleSort(data, direction);
-    setData(sortedData);
+    const sortedData = handleSort(favData, direction);
+    setFavData(sortedData);
   };
-
-  console.log(useContext(AppContext));
 
   return (
     <>
@@ -24,14 +22,13 @@ function Main() {
       <main className="main-container">
         <SortButtons handleSortData={handleSortData} />
 
-        {data.map(({ title, description }) => {
+        {favData.map(({ title, description }) => {
           return (
             <Card
               key={title}
               title={title}
               description={description}
-              handleCartButton={handleAddToCart}
-              handleFavButton={handleAddToFav}
+              handleCartButton={() => {}}
             />
           );
         })}
@@ -40,4 +37,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Favorite;
