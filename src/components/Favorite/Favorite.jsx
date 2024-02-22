@@ -18,7 +18,6 @@ function Favorite() {
 
   return (
     <>
-      <h1 className="header-text">All items:</h1>
       <main className="main-container">
         <SortButtons handleSortData={handleSortData} />
 

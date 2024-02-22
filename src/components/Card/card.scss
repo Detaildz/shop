@@ -1,11 +1,11 @@
-.card {
+.cardBlock {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
     rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
     rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  padding: 2rem;
-  min-height: 20rem;
-  max-width: 16rem;
+  padding: 1rem 2rem;
+  height: 25rem;
+  width: 22rem;
 
   display: flex;
   flex-direction: column;
@@ -13,13 +13,20 @@
   align-items: center;
 
   border-radius: 1rem;
-  border: solid 1px var(--primary-color);
+
   background-color: transparent;
   transition: all 0.4s ease;
   &:hover {
-    background-color: var(--second-color-10);
+    background-color: rgba(245, 243, 238, 0.8);
   }
-
+  .cardImg {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
   h3 {
     font-size: 1.8rem;
     color: var(--second-color-500);
@@ -53,15 +60,10 @@
     color: rgb(188, 187, 184);
     width: 1.5rem;
     height: 1.5rem;
+    padding: 0.5rem;
 
     &--clicked {
       color: var(--second-color-500);
     }
   }
-}
-
-.unActiveFav,
-.activeFav {
-  width: 33px;
-  height: 33px;
 }

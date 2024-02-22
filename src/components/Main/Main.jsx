@@ -20,16 +20,16 @@ function Main() {
 
   return (
     <>
-      <h1 className="header-text">All items:</h1>
       <main className="main-container">
         <SortButtons handleSortData={handleSortData} />
 
-        {data.map(({ title, description }) => {
+        {data.map(({ title, quantity, img }) => {
           return (
             <Card
               key={title}
               title={title}
-              description={description}
+              quantity={quantity}
+              image={img}
               handleCartButton={handleAddToCart}
               handleFavButton={handleAddToFav}
             />

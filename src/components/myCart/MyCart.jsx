@@ -17,15 +17,15 @@ function MyCart() {
   };
   return (
     <>
-      <h1 className="header-text">My Cart:</h1>
       <main className="main-container">
         <SortButtons handleSortData={handleSortData} />
 
-        {cartData.map(({ title, description }) => (
+        {cartData.map(({ title, quantity, img }) => (
           <Card
             key={title}
             title={title}
-            description={description}
+            quantity={quantity}
+            image={img}
             handleCartButton={handleRemoveFromCart}
             cart={true}
             fav={true}
