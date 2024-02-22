@@ -20,12 +20,12 @@ function MyCart() {
       <main className="main-container">
         <SortButtons handleSortData={handleSortData} />
 
-        {cartData.map(({ title, quantity, img }) => (
+        {cartData.map(({ title, start_production, image }) => (
           <Card
             key={title}
             title={title}
-            quantity={quantity}
-            image={img}
+            start_production={start_production}
+            image={image}
             handleCartButton={handleRemoveFromCart}
             cart={true}
             fav={true}

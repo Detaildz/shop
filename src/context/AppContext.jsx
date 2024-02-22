@@ -1,13 +1,27 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 import { mockData } from '../mockData';
 export const AppContext = createContext();
 
 function AppContextProvider(props) {
-  const [data, setData] = useState(mockData);
-  const [cartData, setCartData] = useState([]);
-  const [favData, setFavData] = useState([]);
+  const [data, setData] = useState(
+    JSON.parse(localStorage.getItem('data')) || mockData
+  );
+  const [cartData, setCartData] = useState(
+    JSON.parse(localStorage.getItem('cartData')) || []
+  );
+  const [favData, setFavData] = useState(
+    JSON.parse(localStorage.getItem('favData')) || []
+  );
 
-  // idedam i myCart ir istrinam is maino ta produkta kuris nuejo i carta
+  useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(data));
+    localStorage.setItem('cartData', JSON.stringify(cartData));
+  }, [data, cartData]);
+
+  useEffect(() => {
+    localStorage.setItem('favData', JSON.stringify(favData));
+  }, [favData]);
+
   const handleAddToCart = (item) => {
     setCartData([...cartData, item]);
 

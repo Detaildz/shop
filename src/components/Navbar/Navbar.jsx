@@ -10,7 +10,7 @@ function Navbar() {
     <>
       <nav className="nav-container">
         <NavLink to="/" className="logo">
-          <h1>My shop</h1>
+          <h1>My garage</h1>
         </NavLink>
         <ul>
           <li>

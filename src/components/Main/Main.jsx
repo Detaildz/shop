@@ -23,13 +23,13 @@ function Main() {
       <main className="main-container">
         <SortButtons handleSortData={handleSortData} />
 
-        {data.map(({ title, quantity, img }) => {
+        {data.map(({ title, start_production, image }) => {
           return (
             <Card
               key={title}
               title={title}
-              quantity={quantity}
-              image={img}
+              start_production={start_production}
+              image={image}
               handleCartButton={handleAddToCart}
               handleFavButton={handleAddToFav}
             />

@@ -21,13 +21,13 @@ function Favorite() {
       <main className="main-container">
         <SortButtons handleSortData={handleSortData} />
 
-        {favData.map(({ title, description }) => {
+        {favData.map(({ title, image, start_production }) => {
           return (
             <Card
               key={title}
               title={title}
-              description={description}
-              handleCartButton={() => {}}
+              image={image}
+              start_production={start_production}
             />
           );
         })}
