@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { handleSort } from '../../helpers/SortHelper';
+import React, { useContext, useState } from 'react';
+import { handleSort } from '../../helpers/sortHelper';
 
 import Card from '../Card/Card';
 import SortButtons from '../Button/SortButtons';
@@ -16,15 +16,34 @@ function Main() {
     setData(sortedData);
   };
 
-  console.log(useContext(AppContext));
+  const [searchValue, setSearchValue] = useState('');
 
   return (
     <>
       <main className="main-container">
-        <SortButtons handleSortData={handleSortData} />
-
-        {data.map(({ title, start_production, image }) => {
-          return (
+        <div className="main-container__action">
+          <SortButtons handleSortData={handleSortData} />
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchValue}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+            }}
+          />
+        </div>
+        {data
+          .filter(
+            ({ title, start_production }) =>
+              (typeof title === 'string' &&
+                title.toLowerCase().includes(searchValue.toLowerCase())) ||
+              (typeof start_production === 'number' &&
+                start_production
+                  .toString()
+                  .toLowerCase()
+                  .includes(searchValue.toLowerCase()))
+          )
+          .map(({ title, start_production, image }) => (
             <Card
               key={title}
               title={title}
@@ -33,8 +52,7 @@ function Main() {
               handleCartButton={handleAddToCart}
               handleFavButton={handleAddToFav}
             />
-          );
-        })}
+          ))}
       </main>
     </>
   );

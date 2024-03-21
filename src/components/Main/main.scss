@@ -13,8 +13,15 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
+
+    @media (max-width: 768px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     button {
       padding: 1rem 2rem;
 
@@ -32,6 +39,33 @@
       &:active {
         background-color: var(--second-color-500);
         color: white;
+      }
+    }
+  }
+
+  &-container__action {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 720px;
+    margin: 10rem auto;
+
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
+    input {
+      border-radius: 0.5rem;
+      border: 1px solid var(--second-color-300);
+      padding: 0.6rem;
+
+      &:focus-visible {
+        outline: var(--second-color-500) auto;
       }
     }
   }
