@@ -28,7 +28,7 @@
   }
   h3 {
     font-size: 1.8rem;
-    color: var(--second-color-500);
+    color: var(--green-color-500);
     margin-top: 1rem;
     text-align: center;
   }
@@ -41,8 +41,8 @@
     padding: 1rem 2rem;
 
     border-radius: 8px;
-    border-color: var(--second-color-500);
-    color: var(--second-color-500);
+    border-color: var(--green-color-500);
+    color: var(--green-color-500);
     background-color: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -51,7 +51,7 @@
     }
 
     &:active {
-      background-color: var(--second-color-500);
+      background-color: var(--green-color-500);
       color: white;
     }
   }
@@ -63,7 +63,7 @@
     padding: 0.5rem;
 
     &--clicked {
-      color: var(--second-color-500);
+      color: var(--text-color-yellow);
     }
   }
 }

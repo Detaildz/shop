@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from 'react';
+import { cfg } from '../cfg/cfg';
 export const AppContext = createContext();
 
 function AppContextProvider(props) {
@@ -13,11 +14,9 @@ function AppContextProvider(props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http:///localhost:3000/product/');
+        const response = await fetch(`${cfg.API.HOST}/product/`);
 
         const products = await response.json();
-        console.log('data', products);
-        console.log(cartData);
 
         const filteredData = products.filter(
           (item) => !cartData.some((cartItem) => cartItem.title === item.title)

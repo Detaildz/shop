@@ -1,0 +1,26 @@
+.user {
+  cursor: pointer;
+  color: white;
+}
+
+.offcanvas {
+  border: 1px solid black;
+  padding: 2rem;
+  color: white !important;
+  background-color: rgba(15, 23, 42, 0.5) !important;
+  opacity: 1;
+
+  backdrop-filter: blur(8px);
+
+  button {
+    max-width: 124px;
+    margin: 1rem;
+  }
+}
+
+.btn-close {
+  opacity: 1;
+  color: white;
+  background-color: rgba(240, 240, 240, 0.5) !important;
+  margin-right: 0.5rem;
+}

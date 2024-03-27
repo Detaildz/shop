@@ -26,8 +26,8 @@
       padding: 1rem 2rem;
 
       border-radius: 8px;
-      border-color: var(--second-color-500);
-      color: var(--second-color-500);
+      border-color: var(--green-color-500);
+      color: var(--green-color-500);
       background-color: white;
       cursor: pointer;
       transition: background-color 0.2s ease;
@@ -37,7 +37,7 @@
       }
 
       &:active {
-        background-color: var(--second-color-500);
+        background-color: var(--green-color-500);
         color: white;
       }
     }
@@ -61,11 +61,11 @@
     }
     input {
       border-radius: 0.5rem;
-      border: 1px solid var(--second-color-300);
+      border: 1px solid var(--green-color-500);
       padding: 0.6rem;
 
       &:focus-visible {
-        outline: var(--second-color-500) auto;
+        outline: var(--green-color-300) auto;
       }
     }
   }

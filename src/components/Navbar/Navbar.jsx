@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-//components
-import User from '../User/User';
 
+//components
 import './Navbar.scss';
+import AdminUser from '../AdminUser/AdminUser';
 
 function Navbar() {
   return (
@@ -15,16 +15,19 @@ function Navbar() {
         <div className="nav-container__info">
           <ul>
             <li>
-              <NavLink to="/">All items</NavLink>
+              <NavLink to="/">Main</NavLink>
             </li>
             <li>
-              <NavLink to="/my-cart">My Cart</NavLink>
+              <NavLink to="/my-cart">Buy</NavLink>
             </li>
             <li>
               <NavLink to="/favorites">Favorites</NavLink>
             </li>
+            <li>
+              <NavLink to="/admin">Admin</NavLink>
+            </li>
           </ul>
-          <User />
+          <AdminUser />
         </div>
       </nav>
     </>
