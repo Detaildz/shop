@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useCallback } from 'react';
 import { cfg } from '../cfg/cfg';
 export const AppContext = createContext();
 
@@ -11,21 +11,22 @@ function AppContextProvider(props) {
     JSON.parse(localStorage.getItem('favData')) || []
   );
 
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await fetch(`${cfg.API.HOST}/product/`);
+
+      const products = await response.json();
+
+      const filteredData = products.filter(
+        (item) => !cartData.some((cartItem) => cartItem.title === item.title)
+      );
+      setData(filteredData);
+    } catch (error) {
+      throw new Error('Oooops, Something went wrong');
+    }
+  }, [cartData]);
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${cfg.API.HOST}/product/`);
-
-        const products = await response.json();
-
-        const filteredData = products.filter(
-          (item) => !cartData.some((cartItem) => cartItem.title === item.title)
-        );
-        setData(filteredData);
-      } catch (error) {
-        throw new Error('Oooops, Something went wrong');
-      }
-    };
     fetchData();
   }, []);
 
@@ -81,6 +82,7 @@ function AppContextProvider(props) {
         handleAddToFav,
         handleRemoveFromFav,
         setFavData,
+        fetchData,
       }}
     >
       {[props.children]}

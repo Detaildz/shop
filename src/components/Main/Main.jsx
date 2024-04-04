@@ -32,6 +32,7 @@ function Main() {
             }}
           />
         </div>
+        {!data.length && <h1>No items</h1>}
         {data
           .filter(
             ({ title, start_production }) =>

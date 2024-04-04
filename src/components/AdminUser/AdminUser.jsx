@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { Form, Row, Button, Offcanvas } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import useAuth from '../../hooks/useAuth';
+
+import { Spinner } from 'react-bootstrap';
+
+import { cfg } from '../../cfg/cfg';
 
 import './adminUser.scss';
 
@@ -9,8 +14,10 @@ function AdminUser() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [validated, setValidated] = useState(false);
-
+  const [error, setError] = useState(false);
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { token, setToken } = useAuth();
 
   const handleClose = () => {
     setUsername('');
@@ -20,11 +27,41 @@ function AdminUser() {
   };
   const handleShow = () => setShow(true);
 
-  function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     setValidated(true);
     event.preventDefault();
-    console.log('Trying to log in');
-  }
+
+    const form = event.currentTarget;
+
+    if (!form.checkValidity()) return;
+
+    try {
+      setLoading(true);
+      if (error) setError(false);
+      const response = await fetch(`${cfg.API.HOST}/user/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      });
+
+      if (!response.ok) throw new Error('Username or password is incorrect');
+      const user = await response.json();
+
+      setToken(user.token);
+
+      handleClose();
+    } catch (error) {
+      console.log(error.message);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -34,7 +71,7 @@ function AdminUser() {
       <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton onClick={handleClose}>
           <Offcanvas.Title style={{ fontSize: '2rem' }}>
-            Log in:
+            {token ? 'You are logged in' : 'Login'}
           </Offcanvas.Title>
         </Offcanvas.Header>
 
@@ -66,8 +103,9 @@ function AdminUser() {
                 Password is required
               </Form.Control.Feedback>
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button type="submit" disabled={loading} variant="primary">
               Login
+              {loading && <Spinner animation="border" variant="primary" />}
             </Button>
           </Row>
         </Form>

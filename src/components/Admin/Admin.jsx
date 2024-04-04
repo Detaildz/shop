@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Form, Row, Button } from 'react-bootstrap';
-
+import React, { useState, useContext } from 'react';
 import { cfg } from '../../cfg/cfg';
-
+import useAuth from '../../hooks/useAuth';
+import { AppContext } from '../../context/AppContext';
+// src\components\Admin\Admin.jsx
+import { Form, Row, Button } from 'react-bootstrap';
 import { Spinner } from 'react-bootstrap';
 import { Alert } from 'react-bootstrap';
 import './admin.scss';
@@ -18,6 +19,8 @@ function Admin() {
     message: '',
   });
 
+  const { token } = useAuth();
+  const { fetchData } = useContext(AppContext);
   const handleSubmit = async (event) => {
     setValidated(true);
     event.preventDefault();
@@ -39,6 +42,7 @@ function Admin() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(data),
       });
@@ -53,14 +57,14 @@ function Admin() {
         value: 'success',
         message: 'Product added successfully',
       });
+
+      fetchData();
     } catch (error) {
       console.log('error', error.message);
       setStatus({
         value: 'danger',
         message: error.message || 'Failed to add product',
       });
-
-      setLoading(false);
     } finally {
       setLoading(false);
     }

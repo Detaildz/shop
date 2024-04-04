@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 //components
 import './Navbar.scss';
 import AdminUser from '../AdminUser/AdminUser';
 
 function Navbar() {
+  const { token } = useAuth();
   return (
     <>
       <nav className="nav-container">
@@ -23,9 +25,7 @@ function Navbar() {
             <li>
               <NavLink to="/favorites">Favorites</NavLink>
             </li>
-            <li>
-              <NavLink to="/admin">Admin</NavLink>
-            </li>
+            <li> {token && <NavLink to="/admin">Admin</NavLink>} </li>
           </ul>
           <AdminUser />
         </div>
